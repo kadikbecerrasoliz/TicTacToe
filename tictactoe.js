@@ -4,6 +4,7 @@ const movementButtons = document.querySelectorAll('.movement');
 let playerTurn = '1';
 
 let board = [['', '', ''],['', '', ''],['', '', '']];
+let posCounter = 0;
 
 const startGame = function() {
     [...movementButtons].forEach(function(el, idx) {
@@ -31,6 +32,8 @@ const startGame = function() {
                 verifyWinner();
                 playerTurn = '1';
             }
+
+            posCounter ++;
         });
     });
 }
@@ -38,6 +41,7 @@ const startGame = function() {
 const verifyWinner = function() {
     let playerSymb = playerTurn === '1' ? 'X' : 'O';
 
+    // 1st use-case: a player wins
     if(board[0][0] === playerSymb  && board[1][1] === playerSymb && board[2][2] === playerSymb) {
         alert(`Player ${playerTurn} wins!`);
         reset();
@@ -79,6 +83,13 @@ const verifyWinner = function() {
         reset();
         return;
     }
+
+    // 2nd use-case: no winner
+    if(posCounter === 9) {
+        alert(`Nobody wins!`);
+        reset();
+        return;
+    }
 }
 
 const reset = function() {
@@ -93,6 +104,9 @@ const reset = function() {
 
     // Reset player turn
     playerTurn = '1';
+
+    // Reset the board pos counter
+    posCounter = 0;
 }
 
 const findCoords = function(idx) {
