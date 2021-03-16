@@ -1,0 +1,17 @@
+.container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    margin: 50px auto;
+    width: 50%;
+}
+
+.movement {
+    border: solid 1px white;
+    height: 100px;
+    width: 100%;
+    background-color: steelblue;
+    text-align: center;
+    font-size: 30px;
+    font-style: bold;
+    cursor: pointer;
+}
